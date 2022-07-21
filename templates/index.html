@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
     <title>Leaning English</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,9 +12,13 @@
       document.getElementById('audio').play();
     }
   </script>
+
+  <header class="header"></header>
+  <main  class="main">
     <img src="https://stories-cdn.duolingo.com/image/16221ba6d2c18d4055e5136c0b32a046b9313cc5.svg">
     <br>
-    <audio id="audio" src="{{ url_for('static', filename='audio/what.mp3') }}" preload="auto"></audio>
+    <!--  free text to Speech : https://ttsmp3.com/ -->
+    <audio id="audio" src="{{ url_for('static', filename='audio/what_is_your_name.mp3') }}" preload="auto"></audio>
     <a href="javascript:play_single_sound();"><i class="material-icons">volume_up</i></a>
     <div class="tooltip">What
     <span class="tooltiptext">Cuál</span>
@@ -39,6 +41,8 @@
         <br>
         <input type="submit" value="GREET" id="greet">
     </form>
+  </main>
+  <footer class="footer"></footer>
 </body>
 </html>
 <!-- https://www.w3schools.com/css/css_tooltip.asp */

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Leaning English</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<style>
+table ,th {
+  padding: 10px;
+  margin: 0 auto; 
+}
+th {
+  border: none;
+  height: 70px;
+}
+tr.collapse {
+  visibility: collapse;
+}
+input[value=""]{
+	display:none;
+}
+input[name='hide']{
+  width:  fit-content;
+  margin: 4px 2px;
+  font-size: 16px;
+  padding: 15px 32px; 
+}
+
+</style>
+</head>
+<body>
+  <!--type="text/javascript"-->
+  <!-- https://www.readspeaker.ai/blog/best-text-to-speech-online/ -->
+  <!-- https://ttsmp3.com/ -->
+  <audio id="what" src="{{ url_for('static', filename='audio/what.mp3') }}" preload="auto"></audio>
+  <audio id="is" src="{{ url_for('static', filename='audio/is.mp3') }}" preload="auto"></audio>
+  <audio id="your" src="{{ url_for('static', filename='audio/your.mp3') }}" preload="auto"></audio>
+  <audio id="name" src="{{ url_for('static', filename='audio/name.mp3') }}" preload="auto"></audio>
+<script> 
+
+</script>
+<header class="header"></header>
+<main  class="main">
+  <img src="{{ url_for('static', filename='images/hello2.svg') }}">
+  <br>
+  <p>  Cómo se dice: ¿Cuál es tu nombre?</p>
+  <hr style="margin-left:100px; margin-right:100px; color:#e7e8e7; background-color:#e7e8e7">
+<table >
+  <tr>
+    
+    <th>
+    <input type="button" name="hide" onclick='borrar(0)' value=""/>
+	  <input type="button" name="hide" onclick='borrar(1)' value=""/>
+	  <input type="button" name="hide" onclick='borrar(2)'value=""/>
+	  <input type="button" name="hide" onclick='borrar(3)' value=""/>
+    <input type="button" name="hide" onclick='borrar(4)' value=""/>
+	  <input type="button" name="hide" onclick='borrar(5)' value=""/>
+	  <input type="button" name="hide" onclick='borrar(6)'value=""/>
+	  <input type="button" name="hide" onclick='borrar(7)' value=""/>
+    <input type="button" name="hide" onclick='borrar(8)' value=""/>
+    <input type="button" name="hide" onclick='borrar(9)' value=""/>
+    <input type="button" name="hide" onclick='borrar(10)' value=""/>
+	  <input type="button" name="hide" onclick='borrar(11)' value=""/>
+	  <input type="button" name="hide" onclick='borrar(12)'value=""/>
+	  <input type="button" name="hide" onclick='borrar(13)' value=""/>
+    <input type="button" name="hide" onclick='borrar(14)' value=""/>
+    </th>    
+  </tr>
+  
+</table>
+
+<hr style="margin-left:100px; margin-right:100px; color:#e7e8e7; background-color:#e7e8e7">
+<!--<br>
+<p id="demo"></p> -->
+<table>
+  <!--<tr>-->
+  <th style="width:220px;"> 
+    <button class='check' type='button' onclick='comprobar("what")'>what</button>
+    <button class='check' type='button' onclick='comprobar("is")'>is</button>
+    <button class='check' type='button' onclick='comprobar("your")'>your</button>
+    <button class='check' type='button' onclick='comprobar("name")'>name</button>
+  </th> 
+</table>   
+</main>
+<footer class="footer">
+  <p>
+    <!--&copy; Sandro Ormeño  https://www.youtube.com/watch?v=PSD5pFi6bx4 -->
+    <button type="button">Comprobar</button><br>
+  </p>
+</footer>
+
+<script>
+    //https://www.w3schools.com/jsref/jsref_push.asp
+    let btn_num = 0;
+    const  pregunta = ["what","is","your","name"]
+    let palabras = [];
+    function comprobar(palabra){
+      document.getElementsByName("hide")[btn_num].value = palabra;
+      //alert("Esta es la respuesta : ");
+      btn_num = btn_num +1 ;
+      palabras.push(palabra); 
+      //document.getElementById("demo").innerHTML = palabras;
+      // encuenbtra el índice del botón
+      index = pregunta.indexOf(palabra);
+      //document.getElementById("demo").innerHTML  = index;
+      // cambia el color
+      document.getElementsByClassName("check")[index].style.color= "#d5d5d5";  
+      document.getElementsByClassName("check")[index].style.backgroundColor= "#d5d5d5";
+      // cambia atributos
+      document.getElementsByClassName("check")[index].style.cursor= "not-allowed";
+      document.getElementsByClassName("check")[index].style.pointerEvents= "none";
+      var myaudio = document.getElementById(palabra);
+      myaudio.play(); 
+    }
+    function borrar(numero){
+      // oculto la palabra
+      document.getElementsByName("hide")[numero].style.display = "none";
+      //quees = document.getElementsByName("hide")[0].value;
+      //esto_es = document.getElementsByName("hide")[numero].innerHTML
+      // luego hago funcional nuevamente el  boton
+      //document.getElementById("demo").innerHTML  = palabras[numero];
+      index = pregunta.indexOf(palabras[numero]);
+      // cambia el color
+      document.getElementsByClassName("check")[index].style.color= "#918e8e";  
+      document.getElementsByClassName("check")[index].style.backgroundColor= "#ededed";
+      // cambia atributos
+      document.getElementsByClassName("check")[index].style.cursor= "default";
+      document.getElementsByClassName("check")[index].style.pointerEvents= "all";
+
+    }
+
+</script>
+
+</body>
+</html>

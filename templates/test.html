@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Leaning English</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+        function changeStyle(numero) {
+        //    // https://encycolorpedia.es/ff00ff
+            for (let i = 0; i < 3; i++) {
+
+                document.getElementsByClassName("selec")[i].style.backgroundColor="#ededed";
+                document.getElementsByClassName("selec")[i].style.color= "#919191";
+            }
+            document.getElementsByClassName("selec")[numero].style.backgroundColor="#0add00";
+            document.getElementsByClassName("selec")[numero].style.color= "#ffffff";
+        }
+        */
+
+        // https://developer.mozilla.org/es/docs/Web/CSS/:disabled
+        let respuesta_tem = 0;
+        function cambiar(numero){
+            // nada
+            //quees = document.getElementsByClassName("selec")[numero].innerHTML;
+            //alert("Yo cre que es : " + quees);
+            // https://encycolorpedia.es/ff00ff
+            for (let i = 0; i < 3; i++) {
+
+                document.getElementsByClassName("selec")[i].style.backgroundColor="#ededed";
+                document.getElementsByClassName("selec")[i].style.color= "#919191";
+            }
+            document.getElementsByClassName("selec")[numero].style.backgroundColor="#0add00";
+            document.getElementsByClassName("selec")[numero].style.color= "#ffffff";
+
+            document.getElementsByClassName("check")[0].style.backgroundColor="#0add00";
+            document.getElementsByClassName("check")[0].style.color= "#ffffff";
+            respuesta_tem = numero;
+
+        }
+        function comprobar(){
+            alert("Esta es la respuesta : " + respuesta_tem);
+        }
+    </script>
+    <header class="header"></header>
+    <main  class="main">
+    <!--<img src="https://stories-cdn.duolingo.com/image/16221ba6d2c18d4055e5136c0b32a046b9313cc5.svg"> -->
+    <img src="{{ url_for('static', filename='images/hello2.svg') }}">
+    <br>
+
+    <!-- jinja web: https://jinja.palletsprojects.com/en/3.1.x/ -->
+    {% for cadadata in data %}
+    <div class="tooltip"> {{ cadadata[0] }}
+        <span class="tooltiptext">{{ cadadata[1] }}</span>
+    </div>
+    {% endfor %}
+    <br>
+    <br>
+    <!--
+    <button class="selec" type="button" onclick="changeStyle(0)">Cómo estás?</button><br>
+    <button class="selec" type="button" onclick="changeStyle(1)">De dónde eres?</button><br>
+    <button class="selec" type="button" onclick="changeStyle(2)">Cuál es tu nombre?</button> 
+    <br>
+    -->
+    {% for r in respuestas %}
+    <!--<p> {{ loop.index0 }} : {{ r }}</p><br> -->
+    <button class='selec' type='button' onclick="cambiar( {{ loop.index0 }} )">  {{ r }} </button><br>
+    {% endfor %}
+    </main>
+    <footer class="footer">
+        <p>
+            <!--&copy; Sandro Ormeño  https://www.youtube.com/watch?v=PSD5pFi6bx4 -->
+            <button class="check" type="button" onclick="comprobar()">Comprobar</button><br>
+        </p>
+    </footer>
+</body>
+</html>
