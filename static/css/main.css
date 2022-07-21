@@ -1,6 +1,9 @@
 body {
     text-align: center;
     background-color: rgb(255, 255, 255);
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
 }
 p {
     color: rgb(55, 55, 55);
@@ -87,4 +90,48 @@ input:focus {
 
 audio {
     display: none;
+}
+.selec {
+    background-color: rgb(237, 237, 237);
+}
+
+button {
+    background-color: rgb(237, 237, 237);
+    border:  none;
+    width:  300px;
+    color: rgb(145, 142, 142);
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.footer{
+    background: rgb(252, 252, 252);
+    height: 100;
+    padding: 1em 0;
+    bottom: 0;
+}
+
+.main{
+    background: white;
+    height: 300;
+    padding: 1em 0;
+    bottom: 0;
+    align-items: center;
+}
+
+.check {
+    background-color: rgb(237, 237, 237);
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    width:  fit-content;
 }
