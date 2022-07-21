@@ -118,13 +118,6 @@ button {
     bottom: 0;
 }
 
-.main{
-    background: white;
-    height: 300;
-    padding: 1em 0;
-    bottom: 0;
-    align-items: center;
-}
 
 .check {
     background-color: rgb(237, 237, 237);
