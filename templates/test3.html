@@ -8,7 +8,12 @@
    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-
+body {
+    margin: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+}
 .header{
     background: rgb(255, 255, 255);
     height: 50px;
@@ -18,7 +23,7 @@
 }
 .footer{
     background: rgb(88, 255, 66);
-    height: 100px;
+    height: 200px;
     padding: 1em 0;
     bottom: 0;
 }
@@ -64,7 +69,7 @@ img[name='hola']{
     <button class="check" type="button" >I'm Alex</button><br>
 </main>
 <footer class="footer">
-   
+    <button class="check" type="button" >Comprobar</button><br>
 </footer>
 </body>
 </html>
