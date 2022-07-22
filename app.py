@@ -33,3 +33,7 @@ def transactions():
 @app.route("/test2")
 def lolo():
     return render_template("test2.html")
+
+@app.route("/test3")
+def test3():
+    return render_template("test3.html" , data=Mydata )
