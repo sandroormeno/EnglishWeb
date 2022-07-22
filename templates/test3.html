@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+<head>
+  <meta charset="UTF-8">
+  <title>templante</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+.header{
+    background: rgb(255, 255, 255);
+    height: 50px;
+}
+.main{
+    background: rgb(255, 255, 255);
+}
+.footer{
+    background: rgb(88, 255, 66);
+    height: 100px;
+    padding: 1em 0;
+    bottom: 0;
+}
+
+img {
+    margin: 10px 0 10px 0;
+    width: 340px;
+}
+
+img[name='hola']{
+    margin: 20px 0 20px 0;
+    width: 150px;
+}
+
+
+
+</style>
+</head>
+<body>
+    <script type="text/javascript">
+        function play_single_sound() {
+          document.getElementById('audio').play();
+        }
+    </script>
+  <header class="header">
+    <img src="{{ url_for('static', filename='images/bar.svg') }}">
+  </header>
+
+<main class="main">
+    <img name="hola" src="{{ url_for('static', filename='images/hello2.svg') }}">
+    <br>
+    <audio id="audio" src="{{ url_for('static', filename='audio/what_is_your_name.mp3') }}" preload="auto"></audio>
+    <a href="javascript:play_single_sound();"><i class="material-icons">volume_up</i></a>
+    {% for cadadata in data %}
+    <div class="tooltip"> {{ cadadata[0] }}
+        <span class="tooltiptext">{{ cadadata[1] }}</span>
+    </div>
+    {% endfor %}
+    <br>
+    <br>
+    <button class="check" type="button" >My last name is...</button><br>
+    <button class="check" type="button" >Nice to meet you</button><br>
+    <button class="check" type="button" >I'm Alex</button><br>
+</main>
+<footer class="footer">
+    <button class="check" type="button" >Comprobar</button><br>
+</footer>
+</body>
+</html>
