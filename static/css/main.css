@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     text-align: center;
     background-color: rgb(255, 255, 255);
     display: grid;
@@ -114,7 +113,7 @@ button {
 
 .footer{
     background: rgb(252, 252, 252);
-    height: 200;
+    height: 150px;
     padding: 1em 0;
     bottom: 0;
 }
