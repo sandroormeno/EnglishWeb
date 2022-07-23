@@ -14,6 +14,12 @@ answers = [
 	("De dónde eres?"),
 	("Cuál es tu nombre?")
 ]
+answers_test2 = [
+	("My name is .."),
+	("Nice to meet you"),
+	("How are you?")
+]
+
 
 
 @app.route("/hello")
@@ -36,4 +42,4 @@ def lolo():
 
 @app.route("/test3")
 def test3():
-    return render_template("test3.html" , data=Mydata )
+    return render_template("test3.html" , data=Mydata , respuestas = answers_test2)
