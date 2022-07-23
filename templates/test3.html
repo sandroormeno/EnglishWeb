@@ -4,9 +4,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
 <head>
   <meta charset="UTF-8">
-  <title>templante</title>
+  <title>1st Question</title>
    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
 <style>
 body {
     margin: 0;
@@ -22,12 +23,19 @@ body {
     background: rgb(255, 255, 255);
 }
 .footer{
-    background: rgb(88, 255, 66);
+    background: rgb(250, 250, 250);
     height: 150px;
     padding: 1em 0;
     bottom: 0;
 }
+.material-icons{
+    color: rgb(36, 189, 255);
+    font-size: 36px;
+}
 
+.material-icons[name='slow']{
+    font-size: 42px;
+}
 img {
     margin: 10px 0 10px 0;
     width: 340px;
@@ -38,38 +46,123 @@ img[name='hola']{
     width: 150px;
 }
 
-
+button {
+    color: rgb(90, 90, 90);
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    width:auto;
+}
 
 </style>
 </head>
 <body>
-    <script type="text/javascript">
-        function play_single_sound() {
-          document.getElementById('audio').play();
-        }
-    </script>
+
   <header class="header">
-    <img src="{{ url_for('static', filename='images/bar.svg') }}">
+    <!--  https://materializecss.com/preloader.html -->
+    <img src="{{ url_for('static', filename='images/barblue.svg') }}"> 
+
   </header>
 
 <main class="main">
     <img name="hola" src="{{ url_for('static', filename='images/hello2.svg') }}">
     <br>
-    <audio id="audio" src="{{ url_for('static', filename='audio/what_is_your_name.mp3') }}" preload="auto"></audio>
-    <a href="javascript:play_single_sound();"><i class="material-icons">volume_up</i></a>
-    {% for cadadata in data %}
-    <div class="tooltip"> {{ cadadata[0] }}
-        <span class="tooltiptext">{{ cadadata[1] }}</span>
-    </div>
+    <p>Cuál es la traducción:</p>
+    <br>
+    <!-- https://www.storyblocks.com/audio/stock/messenger-note-alert-h-twiw_7tvik8p10v9n.html-->
+    <audio id="audio" src="{{ url_for('static', filename='audio/what_is_your_name.mp3') }}" preload="auto"></audio> 
+    <audio id="audioSlow" src="{{ url_for('static', filename='audio/want__is__your__name.mp3') }}" preload="auto"></audio>
+    <audio id="wrong" src="{{ url_for('static', filename='audio/wrong.mp3') }}" preload="auto"></audio>
+    <audio id="ok" src="{{ url_for('static', filename='audio/ok.mp3') }}" preload="auto"></audio>
+    <!-- la tabla es para alinear los iconos al texto-->
+    <table>
+        <tr>
+        <td><a href="javascript:play_single_sound();"><i class="material-icons">play_circle_filled</i></a></td>
+        <td>
+            {% for cadadata in data %}
+            <div class="tooltip"> {{ cadadata[0] }}
+                <span class="tooltiptext">{{ cadadata[1] }}</span>
+            </div> 
+            {% endfor %}
+        </td>
+        <td><a href="javascript:play_single_sound_slow();"><i class="material-icons" name='slow'>slideshow</i></a></td>
+        </tr>
+    </table>
+    <br>
+    <!--
+    <button class="question" type="button" >My last name is...</button><br>
+    <button class="question" type="button" >Nice to meet you</button><br>
+    <button class="question" type="button" >I'm Alex</button><br>
+    -->
+    {% for r in respuestas %}
+    <!--<p> {{ loop.index0 }} : {{ r }}</p><br> -->
+    <button class='question' type='button' onclick="cambiar( {{ loop.index0 }} )">  {{ r }} </button><br>
     {% endfor %}
-    <br>
-    <br>
-    <button class="check" type="button" >My last name is...</button><br>
-    <button class="check" type="button" >Nice to meet you</button><br>
-    <button class="check" type="button" >I'm Alex</button><br>
 </main>
-<footer class="footer">
-    <button class="check" type="button" >Comprobar</button><br>
+<footer class="footer" id="myfooter">
+    <button class="check" type="button" onclick="comprobar()">Comprobar</button><br>
 </footer>
+<script type="text/javascript">
+    // Cambio el color de texto de check y lo hago inactivo
+    document.getElementsByClassName("check")[0].style.color= "#ffffff";
+    document.getElementsByClassName("check")[0].style.cursor= "not-allowed";
+    document.getElementsByClassName("check")[0].style.pointerEvents= "none";
+
+    function play_single_sound() {
+      document.getElementById('audio').play();
+    }
+    function play_single_sound_slow() {
+        document.getElementById('audioSlow').play();
+    }
+    function play_single_wrong() {
+        document.getElementById('wrong').play();
+    }
+    function play_single_ok() {
+        document.getElementById('ok').play();
+    }
+    let respuesta_tem = 0;
+    function cambiar(numero){
+        // nada
+        //quees = document.getElementsByClassName("selec")[numero].innerHTML;
+        //alert("Yo cre que es : " + quees);
+        // https://encycolorpedia.es/ff00ff
+        for (let i = 0; i < 3; i++) {
+
+            document.getElementsByClassName("question")[i].style.backgroundColor="#ededed";
+            document.getElementsByClassName("question")[i].style.color= "#919191";
+        }
+        document.getElementsByClassName("question")[numero].style.backgroundColor="#0add00";
+        document.getElementsByClassName("question")[numero].style.color= "#ffffff";
+        // color de botón comprobar
+        document.getElementsByClassName("check")[0].style.backgroundColor="#24baff";
+        document.getElementsByClassName("check")[0].style.color= "#ffffff";
+        document.getElementsByClassName("check")[0].style.cursor= "pointer";
+        document.getElementsByClassName("check")[0].style.pointerEvents= "all";
+        // el fondo gris claro
+        document.getElementById("myfooter").style.backgroundColor="#fafafa";
+        respuesta_tem = numero;
+
+    }
+    function comprobar(){
+        if (respuesta_tem == 0){
+            play_single_ok();
+            document.getElementById("myfooter").style.backgroundColor="#bfe5ff"; //e35162
+            alert("Respuesata correcta!");
+        }else if (respuesta_tem == 1){
+            play_single_wrong();
+            document.getElementById("myfooter").style.backgroundColor="#ffc7ce";
+            document.getElementsByClassName("check")[0].style.backgroundColor="#e35162";
+            alert("Mucho gusto,  Respuesata INCORRECTA!");
+        }else{
+            play_single_wrong();
+            document.getElementById("myfooter").style.backgroundColor="#ffc7ce";
+            document.getElementsByClassName("check")[0].style.backgroundColor="#e35162";
+            alert("Cómo estás?,  Respuesata INCORRECTA!");     
+        }
+            
+    }
+
+</script>
 </body>
 </html>
