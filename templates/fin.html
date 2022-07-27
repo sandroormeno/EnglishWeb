@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Congratulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        display: grid;
+        min-height: 100vh;
+        grid-template-rows: auto 1fr auto;
+    }
+    .header{
+        background: rgb(255, 255, 255);
+        height: 50px;
+    }
+    .main{
+        background: rgb(255, 255, 255);
+    }
+    .footer{
+        background: rgb(250, 250, 250);
+        height: 150px;
+        padding: 1em 0;
+        bottom: 0;
+    }
+    .material-icons{
+        color: rgb(36, 189, 255);
+        font-size: 36px;
+    }
+    
+    .material-icons[name='slow']{
+        font-size: 42px;
+    }
+    img {
+        margin: 10px 0 10px 0;
+        width: 340px;
+    }
+    
+    img[name='hola']{
+        margin: 20px 0 20px 0;
+        width: 150px;
+    }
+    
+    button {
+        color: rgb(90, 90, 90);
+    }
+    table{
+        margin-left: auto;
+        margin-right: auto;
+        width:auto;
+    }
+        
+</style>
+</head>
+    
+<body>
+    <header class="header">
+        <!--  https://materializecss.com/preloader.html -->
+        <img src="{{ url_for('static', filename='images/barbluefull.svg') }}">    
+    </header>
+    <main class="main">
+        <img name="hola" src="/static/images/hello2.svg">
+        <br>
+        <br>
+        <p>
+            Congratulation!
+        </p>
+        <br>
+    </main>
+    <footer class="footer">
+        <p>
+          &copy; Sandro Ormeño
+        </p>
+    </footer>
+
+
+</body>
+</html>
