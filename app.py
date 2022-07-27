@@ -504,7 +504,7 @@ def questions():
 			global contador		
 			contador += 1
 			#print(str(contador))
-	if contador < len(Myquestions):
+	if valor < len(Myquestions):
 
 		return render_template("questions.html" ,
 			val =  valor,
@@ -516,7 +516,7 @@ def questions():
 			)
 	else:
 
-		contador = 0
+		valor = 0
 		return render_template("fin.html")
 
 #@app.route("/rest", methods=['POST', 'GET'])
