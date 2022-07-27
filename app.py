@@ -509,6 +509,7 @@ def questions():
 			question = Myquestions[contador][4]
 			)
 	else:
+		contador = 0
 		return render_template("fin.html")
 
 #@app.route("/rest", methods=['POST', 'GET'])
