@@ -3,12 +3,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
 <head>
-  <meta charset="UTF-8">
-  <title>1st Question</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   
+    <meta charset="UTF-8">
+    <title>1st Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 body {
     margin: 0;
@@ -80,6 +79,7 @@ table{
     <!-- https://www.storyblocks.com/audio/stock/messenger-note-alert-h-twiw_7tvik8p10v9n.html-->
     <!--<audio id="audio" src="{{ url_for('static', filename='audio/what_is_your_name.mp3') }}" preload="auto"></audio> -->
     <!--<audio id="audioSlow" src="{{ url_for('static', filename='audio/want__is__your__name.mp3') }}" preload="auto"></audio>-->
+    <!--   https://ttsmp3.com/ -->
     {% for myaudio in myAudios %}
         <audio id= {{ myaudio[0] }} src={{ myaudio[1] }} preload="auto"></audio>
     {% endfor %}
@@ -114,6 +114,7 @@ table{
 <footer class="footer" id="myfooter">
     <form action="/questions" method="POST">
         <input type = "hidden" id = "midata" name = "midata">
+        <input type = "hidden" id = "numero" name = "numero">
         <button  class="check" type="button" onclick="comprobar()">Comprobar</button><br>
         <!--<input type="submit" value="hi" id="greet"> -->
     </form>
@@ -167,6 +168,7 @@ table{
 
             var data = "EXITO"; 
             document.getElementById("midata").value = data; 
+            document.getElementById("numero").value = {{ val }} + 1; 
             play_single_ok();
             document.getElementById("myfooter").style.backgroundColor="#bfe5ff"; //e35162
             document.getElementsByClassName("check")[0].textContent = "Continuar con la siguiente";
