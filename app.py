@@ -86,12 +86,12 @@ Myquestions = [
 	[ #primera entrada
 	[
 	("I", "Yo"),
-	("___", "___"),
+	("...", "..."),
 	("Rosa Elena", "ROsa Elena")
 	],[
-	("quiero"),
-	("tengo"),
-	("soy")
+	("Want\nQuerer"),
+	("Have\nTener"),
+	("I am Rosa Elena\nYo soy Rosa Elena")
 	],[
 	("want"),
 	("have"),
@@ -108,9 +108,9 @@ Myquestions = [
 	("from", "de"),
 	("Mexico", "México"),
 	],[
-	("eres"),
-	("es"),
-	("soy")
+	("You are from Mexico\nTú eres de México"),
+	("Is\nEs"),
+	("Am\nSoy")
 	],[
 	("are"),
 	("is"),
