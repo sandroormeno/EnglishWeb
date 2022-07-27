@@ -7,6 +7,7 @@
   <title>1st Question</title>
    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    
 <style>
 body {
@@ -53,6 +54,9 @@ table{
     margin-left: auto;
     margin-right: auto;
     width:auto;
+}
+.swal-text {
+    text-align: center;
 }
 
 </style>
@@ -166,17 +170,34 @@ table{
             play_single_ok();
             document.getElementById("myfooter").style.backgroundColor="#bfe5ff"; //e35162
             document.getElementsByClassName("check")[0].textContent = "Continuar con la siguiente";
-            alert(letters[respuesta_tem] + ", Respuesta correcta!");
-            document.getElementsByClassName("check")[0].type = "submit";
+            //alert(letters[respuesta_tem] + "\nRespuesta CORRECTA!");
+            swal({
+                title: "Buen trabajo!",
+                text: letters[respuesta_tem],
+                icon: "success",
+                //button: "Continuar",
+                button: false,
+                timer: 2000,
+              }).then((value) => {
+                document.getElementsByClassName("check")[0].type = "submit";
+              });
+            
 
         } else {
 
             play_single_wrong();
             document.getElementById("myfooter").style.backgroundColor="#ffc7ce";
             document.getElementsByClassName("check")[0].style.backgroundColor="#e35162";
-            alert( letters[respuesta_tem] + ", Respuesta INCORRECTA!");
+            //alert( letters[respuesta_tem] + "\nRespuesta INCORRECTA!");
+            swal({
+                title: "Incorrecto!",
+                text: letters[respuesta_tem],
+                icon: "error",
+                //button: "Continuar",
+                button: false,
+                timer: 2000,
+              });
         }
-
     }  
 </script>
 </body>
