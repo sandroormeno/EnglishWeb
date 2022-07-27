@@ -199,7 +199,7 @@ Myquestions = [
 	("You", "Tú"),
 	("___", "___"),
 	("a", "una"),
-	("large salad", "ensalada grande"),
+	("small salad", "ensalada pequeña"),
 	],[
 	("quiero"),
 	("eres"),
@@ -291,7 +291,7 @@ Myquestions = [
 	("You", "Tú"),
 	("___", "___"),
 	("a", "un"),
-	("bithday cake", "pastel de cumpleaños"),
+	("birthday cake", "pastel de cumpleaños"),
 	],[
 	("soy"),
 	("estoy"),
@@ -301,8 +301,8 @@ Myquestions = [
 	("are"),
 	("need")
 	],[
-	("audio", "/static/audio/you_need_a_bithday_cake.mp3"),
-	("audioSlow", "/static/audio/you__need__a__bithday__cake.mp3")
+	("audio", "/static/audio/You_need_a_birthday_cake.mp3"),
+	("audioSlow", "/static/audio/You__need__a__birthday__cake.mp3")
 	],["Cuál es el verbo: ", 2, "/static/images/bar_12.svg", "/static/images/cake.svg"]
 	],[ # 13 entrada
 	[
@@ -494,21 +494,28 @@ def test3():
 
 @app.route("/questions", methods=['POST', 'GET'])
 
-def questions():	
+def questions():
+	# https://youtu.be/CEyymB-vta8
+	valor = 0	
 	if request.method == 'POST':
-		if 	str(request.form['midata']) == "EXITO":
-			global contador
+		print(str(request.form['numero']))
+		valor = int(request.form['numero'])
+		if 	str(request.form['midata']) == "EXITO":	
+			global contador		
 			contador += 1
 			#print(str(contador))
 	if contador < len(Myquestions):
-		return render_template("questions.html" , 
-			data= Myquestions[contador][0] , 
-			correcion = Myquestions[contador][1] ,
-			respuestas = Myquestions[contador][2] ,
-			myAudios = Myquestions[contador][3],
-			question = Myquestions[contador][4]
+
+		return render_template("questions.html" ,
+			val =  valor,
+			data= Myquestions[valor][0] , 
+			correcion = Myquestions[valor][1] ,
+			respuestas = Myquestions[valor][2] ,
+			myAudios = Myquestions[valor][3],
+			question = Myquestions[valor][4]
 			)
 	else:
+
 		contador = 0
 		return render_template("fin.html")
 
