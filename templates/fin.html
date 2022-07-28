@@ -63,11 +63,18 @@
         <img src="{{ url_for('static', filename='images/barbluefull.svg') }}">    
     </header>
     <main class="main">
-        <img name="hola" src="/static/images/hello2.svg">
+        <img name="hola" src="/static/images/beer.svg">
         <br>
         <br>
         <p>
-            Congratulation!
+            Congratulation!<br>
+            {% if  bad  > 1 -%}
+                Tienes {{  bad }}  errores de {{ total }} preguntas!<br>
+            {%- elif  bad  == 0 -%}
+                No tienes ningún  error en {{ total }} preguntas!<br>
+            {% else -%}
+                Tienes {{  bad }}  error de {{ total }} preguntas!<br>
+            {% endif %}   
         </p>
         <br>
     </main>

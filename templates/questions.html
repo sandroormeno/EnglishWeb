@@ -63,29 +63,31 @@ table{
 <body>
 
   <header class="header">
-    <!--  https://materializecss.com/preloader.html -->
-    <!--<img src="{{ url_for('static', filename='images/barblue.svg') }}"> -->
+    {#    https://materializecss.com/preloader.html #}
+    {# <img src="{{ url_for('static', filename='images/barblue.svg') }}"> #}
     <img src= {{ question[2] }}> 
 
   </header>
 
 <main class="main">
-    <!--<img name="hola" src="{{ url_for('static', filename='images/hello2.svg') }}">-->
+    {# -<img name="hola" src="{{ url_for('static', filename='images/hello2.svg') }}"> #}
     <img name="hola" src= {{ question[3] }} >
     <br>
-    <!--<p>Can you answer the question?</p> -->
+    {# <p>Can you answer the question?</p> #}
     <p> {{ question[0] }}</p>
     <br>
+    {#
     <!-- https://www.storyblocks.com/audio/stock/messenger-note-alert-h-twiw_7tvik8p10v9n.html-->
     <!--<audio id="audio" src="{{ url_for('static', filename='audio/what_is_your_name.mp3') }}" preload="auto"></audio> -->
     <!--<audio id="audioSlow" src="{{ url_for('static', filename='audio/want__is__your__name.mp3') }}" preload="auto"></audio>-->
     <!--   https://ttsmp3.com/ -->
+    #}
     {% for myaudio in myAudios %}
         <audio id= {{ myaudio[0] }} src={{ myaudio[1] }} preload="auto"></audio>
     {% endfor %}
     <audio id="wrong" src="{{ url_for('static', filename='audio/wrong.mp3') }}" preload="auto"></audio>
     <audio id="ok" src="{{ url_for('static', filename='audio/ok.mp3') }}" preload="auto"></audio>
-    <!-- la tabla es para alinear los iconos al texto-->
+    <!-- la tabla es para alinear los iconos al texto -->
     <table>
         <tr>
         <td><a href="javascript:play_single_sound();"><i class="material-icons">play_circle_filled</i></a></td>
@@ -100,33 +102,40 @@ table{
         </tr>
     </table>
     <br>
+    {#
     <!--
     <button class="question" type="button" >My last name is...</button><br>
     <button class="question" type="button" >Nice to meet you</button><br>
     <button class="question" type="button" >I'm Alex</button><br>
     -->
+    #}
     {% for r in respuestas %}
-    <!--<p> {{ loop.index0 }} : {{ r }}</p><br> -->
+    {# <!--<p> {{ loop.index0 }} : {{ r }}</p><br> --> #}
     <button class='question' type='button' onclick="cambiar( {{ loop.index0 }} )">  {{ r }} </button><br>  
     {% endfor %}
 
 </main>
 <footer class="footer" id="myfooter">
     <form action="/questions" method="POST">
-        <input type = "hidden" id = "midata" name = "midata">
+        <input type = "hidden" id = "malo" name = "malo">
         <input type = "hidden" id = "numero" name = "numero">
         <button  class="check" type="button" onclick="comprobar()">Comprobar</button><br>
-        <!--<input type="submit" value="hi" id="greet"> -->
+        {# <!--<input type="submit" value="hi" id="greet"> --> #}
     </form>
 </footer>
-<script>
+<script> 
+    // reproducir el primer audio
+    window.onload = function () {
+        document.getElementById("audio").play();
+    }
+    var wrong = {{ error }};
     // Cambio el color de texto de check y lo hago inactivo
     document.getElementsByClassName("check")[0].style.color= "#ffffff";
     document.getElementsByClassName("check")[0].style.cursor= "not-allowed";
     document.getElementsByClassName("check")[0].style.pointerEvents= "none";
 
     function play_single_sound() {
-      document.getElementById('audio').play();
+        document.getElementById('audio').play();
     }
     function play_single_sound_slow() {
         document.getElementById('audioSlow').play();
@@ -139,10 +148,10 @@ table{
     }
     let respuesta_tem = 0;
     function cambiar(numero){
-        // nada
-        //quees = document.getElementsByClassName("selec")[numero].innerHTML;
-        //alert("Yo cre que es : " + quees);
+   
+        // selector del color 
         // https://encycolorpedia.es/ff00ff
+    
         for (let i = 0; i < 3; i++) {
 
             document.getElementsByClassName("question")[i].style.backgroundColor="#ededed";
@@ -161,23 +170,24 @@ table{
 
     }
     function comprobar(){
-        var letters = {{ correcion|safe }};
 
+        var letters = {{ correcion|safe }};
+        
 
         if ( respuesta_tem == {{ question[1] }} ) {
 
-            var data = "EXITO"; 
-            document.getElementById("midata").value = data; 
+            //document.getElementById("midata").value = data; 
             document.getElementById("numero").value = {{ val }} + 1; 
+            document.getElementById("malo").value = wrong; 
             play_single_ok();
-            document.getElementById("myfooter").style.backgroundColor="#bfe5ff"; //e35162
+            document.getElementById("myfooter").style.backgroundColor="#bfe5ff"; 
             document.getElementsByClassName("check")[0].textContent = "Continuar con la siguiente";
             //alert(letters[respuesta_tem] + "\nRespuesta CORRECTA!");
             swal({
                 title: "Buen trabajo!",
                 text: letters[respuesta_tem],
                 icon: "success",
-                //button: "Continuar",
+                // button: "Continuar",
                 button: false,
                 timer: 2000,
               }).then((value) => {
@@ -187,6 +197,7 @@ table{
 
         } else {
 
+            wrong = wrong + 1; 
             play_single_wrong();
             document.getElementById("myfooter").style.backgroundColor="#ffc7ce";
             document.getElementsByClassName("check")[0].style.backgroundColor="#e35162";
