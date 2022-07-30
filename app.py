@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash
 from mydata import Myquestions, bigData, answers_test2, answers, Mydata
 from mydata2 import questions2
+import random
 
 app = Flask(__name__)
 app.secret_key = "HOLLAsasds"
@@ -27,8 +28,52 @@ def transactions():
 def lolo():
     return render_template("test2.html")
 
-@app.route("/test3", methods=['POST', 'GET'])
+qtwo = [
+	[ #primera entrada
+	[
+	("I", "I", "Yo", "/static/audio/words/I.mp3"), # pregunta
+	("want","want", "quiero", "/static/audio/words/want.mp3"),
+	("to","to", "comprar", "/static/audio/words/to.mp3"),
+	("buy","buy", "comprar", "/static/audio/words/buy.mp3"),
+	("a", "a", "una", "/static/audio/words/a.mp3"),
+	("house", "house", "casa", "/static/audio/words/house.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"I want to buy a house" # opciones de respuesta
+	],[
+	("audio", "/static/audio/I_want_to_buy_a_house.mp3"), # audio normal
+	("audioSlow", "/static/audio/I__want__to__buy__a__house.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	],["Escucha y selecciona:", 15, "/static/images/bar_2.svg", "/static/images/friend.svg"]
+	],
+]
 
+# estA PARTE es el barajado
+# 
+mylist = qtwo[contador][0]
+myshuffle ="" # este es un string 
+myArray = [] # este es un arreglo
+random.shuffle(mylist) # el barajado
+for i in mylist:
+	#myshuffle.append(i[0]) 
+	myshuffle += i[0] + " " # el resultado lo pongo en un string
+myArray.append(myshuffle) # luego en un arreglo para enviar e jscript
+#print(myArray)
+
+@app.route("/questionstwo", methods=['POST', 'GET'])
+def questionsTwo():
+    return render_template("q2.html",
+		res_ok = qtwo[contador][2] ,
+		respuestas = myArray,
+		botones= mylist,   # shuffle python : https://www.w3schools.com/python/trypython.asp?filename=demo_ref_random_shuffle
+		myAudios = qtwo[contador][3],
+		question = qtwo[contador][4]
+		)
+
+@app.route("/test3", methods=['POST', 'GET'])
 def test3():	
 	if request.method == 'POST':
 		if 	str(request.form['midata']) == "EXITO":
