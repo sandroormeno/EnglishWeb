@@ -7,7 +7,7 @@
     <title>2nd Question</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <style>
 body {
     margin: 0;
@@ -36,18 +36,25 @@ body {
 .material-icons[name='slow']{
     font-size: 42px;
 }
+
+.material-icons[name='ilustracion']{
+    color: rgba(255, 46, 129, 0.765);
+    font-size: 90px;
+}
 img {
     margin: 10px 0 10px 0;
     width: 340px;
 }
 
 img[name='hola']{
-    margin: 20px 0 20px 0;
-    width: 150px;
+    margin: 10px 0 10px 0;
+    width: 80px;
 }
 
 button {
-    color: rgb(90, 90, 90);
+    font-size: 0.8em;
+    /*color: rgb(90, 90, 90);*/
+    color: rgb(154, 152, 152);
 }
 table{
     margin-left: auto;
@@ -102,30 +109,67 @@ th {
     font-size: 0.8em;
     font-family: verdana;
 }
+/* EL POPUP */
+.popup_box{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 320px;
+    background: #f2f2f2;
+    text-align: center;
+    align-items: center;
+    padding: 40px;
+    border: 1px solid #b3b3b3;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.2); 
+    z-index: 9999;
+    border-radius: 15px;
+    display: none; 
+}
+.continuar{
+    background: rgb(36, 189, 255);
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+.comprobar{
+    font-size: 1.2em;
+}
+img[name='award']{
+    margin: 10px 0 10px 0;
+    width: 120px;
+}
+p{
+    font-size: 0.7em;
+}
   
 </style>
 </head>
 <body>
     <header class="header">
-        <img src= {{ question[2] }}> 
-        
+        <!-- la barra de recorrido-->
+        <img src= {{ question[2] }}>        
     </header>
     <main class="main">
         <!-- los audios de botones-->
         {% for myaudio in botones %}
-        <audio id= {{ myaudio[0] }} src={{ myaudio[3] }} preload="auto"></audio>
+        <audio id= {{ myaudio[0] }} src={{ myaudio[2] }} preload="auto"></audio>
         {% endfor %}
         <!-- los audios de pregunta-->
         {% for myaudio in myAudios %}
             <audio id= {{ myaudio[0] }} src={{ myaudio[1] }} preload="auto"></audio>
         {% endfor %}
-        <p> {{ question[0] }}</p>
+        <audio id="wrong" src="{{ url_for('static', filename='audio/wrong.mp3') }}" preload="auto"></audio>
+        <audio id="ok" src="{{ url_for('static', filename='audio/ok.mp3') }}" preload="auto"></audio>
+        <!--<i class="material-icons" name='ilustracion'>{{ question[3] }}</i><br> -->
+        <!-- https://www.svgrepo.com/ -->
+        <img name = "hola" src= {{ question[3] }}> 
         <table>
             <tr>
-            <td><a href="javascript:play_single_sound();"><i class="material-icons">play_circle_filled</i></a></td>
-            <td><a href="javascript:play_single_sound_slow();"><i class="material-icons" name='slow'>slideshow</i></a></td>
-        </tr>
-    </table>
+                <td><a href="javascript:play_single_sound();"><i class="material-icons">play_circle_filled</i></a></td>
+                <td>{{ question[0] }}</td>        
+                <td><a href="javascript:play_single_sound_slow();"><i class="material-icons" name='slow'>slideshow</i></a></td>
+            </tr>
+        </table>
     <hr style="margin-left:20px; margin-right:20px; color:#e7e8e7; background-color:#e7e8e7">
     <table style="height:160px;">
     <tr>   
@@ -137,7 +181,7 @@ th {
     <script>
         // Pongo 32 botones dumies 
         let salida = "";
-        for (let i = 0; i < 32; i++) {
+        for (let i = 0; i < 48; i++) {
           //text += cars[i] + "<br>";
           salida += "<input type='button' name='hide' onclick='borrar(" + i + ")' value=''>"
         }   
@@ -159,10 +203,24 @@ th {
           -->
         </th> 
       </table> 
-      <p id="demo"></p> 
+      <p id="demo"></p>
+        <!-- este es un popUp -->
+        <div class="popup_box">
+            <!--<img name = "hola" src= https://www.svgrepo.com/show/380550/medal-champion-award-winner-olympic.svg>  -->
+            <!--<img name = "award" src= https://www.svgrepo.com/show/304720/star-prize-award.svg> -->
+            <img name = "award" src= https://www.svgrepo.com/show/211204/trophy-award.svg>
+            <h1>Congratulations</h1>
+            <label>Estás aprendiendo mucho</label><br><br>
+            <form action="/questionstwo" method="POST">
+                <input type = "hidden" id = "malo" name = "malo">
+                <input type = "hidden" id = "numero" name = "numero">
+                <button  class="continuar" type="submit" onclick="continuar()"> Continuar</button>
+            </form>
+            
+        </div>
     </main>
     <footer class="footer" id="myfooter">
-        <form action="/questions" method="POST">
+        <form action="/questionstwo" method="POST">
             <input type = "hidden" id = "malo" name = "malo">
             <input type = "hidden" id = "numero" name = "numero">
             <button  class="comprobar" type="button" onclick="comprobar()">Comprobar</button><br>
@@ -176,9 +234,11 @@ th {
         pregunta.push({{myaudio[0]}}); 
         {% endfor %}
         */
+        var wrong = {{ error }};
         // reproducir el primer audio
         window.onload = function () {
             document.getElementById("audio").play();
+            chronometerCall = setInterval(chronometer, 1000);
 
         }
         function play_single_sound() {
@@ -186,6 +246,12 @@ th {
         }
         function play_single_sound_slow() {
             document.getElementById('audioSlow').play();
+        }
+        function play_single_wrong() {
+            document.getElementById('wrong').play();
+        }
+        function play_single_ok() {
+            document.getElementById('ok').play();
         }
         // Cambio el color de texto de check y lo hago inactivo
         document.getElementsByClassName("comprobar")[0].style.color= "#ffffff";
@@ -270,7 +336,9 @@ th {
                 document.getElementsByClassName("comprobar")[0].style.backgroundColor="#24baff";
                 //document.getElementsByClassName("comprobar")[0].style.color= "#24baff";
                 document.getElementsByClassName("comprobar")[0].style.cursor= "pointer";
-                document.getElementsByClassName("comprobar")[0].style.pointerEvents= "all";  
+                document.getElementsByClassName("comprobar")[0].style.pointerEvents= "all"; 
+                // fonfo footer:
+                document.getElementById("myfooter").style.backgroundColor="#fafafa"; 
             }else{
                 document.getElementsByClassName("comprobar")[0].style.backgroundColor="#ededed";
                 //document.getElementsByClassName("comprobar")[0].style.color= "#ffffff";
@@ -281,7 +349,7 @@ th {
         function comprobar(){
             
             var texto = "";
-            for( var i = 0; i < 12; i++){
+            for( var i = 0; i < 48; i++){
                 if (document.getElementsByName("hide")[i].value != ""){
                     texto += document.getElementsByName("hide")[i].value + ","; 
                 }               
@@ -297,10 +365,70 @@ th {
                     ver = "mal"    
                 }
             }
-            alert(ver);
-            //document.getElementById("demo").innerHTML = respuesta.length + turespuesta[0];
+            // Custom Alert Popup Box using HTML CSS & Javascript:
+            // https://www.youtube.com/watch?v=QKMFJhB9eEY
+            if( ver == "mal"){
+                play_single_wrong();
+                wrong = wrong + 1; 
+                document.getElementById("myfooter").style.backgroundColor="#ffc7ce";
+                document.getElementsByClassName("comprobar")[0].style.backgroundColor="#e35162";
+                //$('.popup_box').css("display", "block");
+                
+                /*
+                swal({
+                    title: "Incorrecto!",
+                    icon: "error",
+                    text: "Prueba de nuevo",
+                    //button: "Continuar",
+                    button: false,
+                    timer: 2000,
+                  });
+                */
+            }else{
+                play_single_ok(); 
+                document.getElementById("numero").value = {{ val }} + 1;
+                document.getElementById("malo").value = wrong;  
+                document.getElementsByClassName("popup_box")[0].style.display= "block";
+                // cambio de color del botón comprobar, para NO llamar la atención
+                document.getElementsByClassName("comprobar")[0].style.backgroundColor="#ededed";
+                if(seconds > 59){
+                    var t = parseInt(seconds/60);
+                    var s = seconds % 60;
+                    document.getElementById("demo").innerHTML = t + " min " + s + " seg";
+                }else{
+                    document.getElementById("demo").innerHTML = seconds + " seg";
+                }
+                
+                /*              
+                swal({
+                    title: "Buen trabajo!",
+                    text: "Continua con la siguiente...",
+                    icon: "success",
+                    // button: "Continuar",
+                    button: false,
+                    timer: 2000,
+                  }).then((value) => {
+                    document.getElementsByClassName("comprobar")[0].type = "submit";
+                  });
+                */
+            }
+            //alert(ver);
+            //document.getElementById("demo").innerHTML = turespuesta.length;
         }
 
+        function continuar(){
+            document.getElementsByClassName("popup_box")[0].style.display= "none";
+        }
+
+        // información para incluir un timer ( chronometer):
+        // https://www.proglogic.com/code/javascript/time/chronometer.php
+        // https://codepen.io/vanessametonini/pen/GMWEBv
+        // https://www.delftstack.com/es/howto/javascript/javascript-stopwatch/ ( ojo! tiene mucha publicidad)
+        let seconds = `00`;
+        var t;
+        function chronometer() {
+            seconds ++;
+        }
     </script>
 </body>
 </html>
