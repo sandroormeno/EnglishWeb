@@ -133,7 +133,7 @@ qtwo = [
 	],["Escucha y selecciona:", 15, "/static/images/bar_10.svg", "https://www.svgrepo.com/show/275144/plane-ticket-travel.svg"]
 	],[ # 6 entrada
 	[
-	("You", "Tú", "/static/audio/words/you.mp3"), # pregunta
+	("You", "Tú", "/static/audio/words/You.mp3"), # pregunta
 	("are", "eres", "/static/audio/words/are.mp3"),
 	("from", "de", "/static/audio/words/from.mp3"),
 	("Mexico", "México", "/static/audio/words/mexico.mp3"),
