@@ -164,7 +164,7 @@ qtwo = [
 	"This is my friend" # opciones de respuesta
 	],[
 	("audio", "/static/audio/this_is_my_friend.mp3"), # audio normal
-	("audioSlow", "/static/audio/This__is__my__friend.mp3") #audio lento
+	("audioSlow", "/static/audio/this__is__my__friend.mp3") #audio lento
 	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
 	# https://materializecss.com/icons.html
 	# https://www.svgrepo.com/
