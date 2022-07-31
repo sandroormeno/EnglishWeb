@@ -74,7 +74,7 @@ qtwo = [
 	[
 	("Where", "Dónde", "/static/audio/words/where.mp3"), # pregunta
 	("are", "eres", "/static/audio/words/are.mp3"),
-	("you", "tú", "/static/audio/words/you.mp3"),
+	("you", "tú", "/static/audio/words/You.mp3"),
 	("from?", "de", "/static/audio/words/from.mp3"),
 
 	],[
@@ -93,7 +93,7 @@ qtwo = [
 	],
 	[ # 4 entrada
 	[
-	("You", "Tú", "/static/audio/words/you.mp3"), # pregunta
+	("You", "Tú", "/static/audio/words/You.mp3"), # pregunta
 	("want", "quieres", "/static/audio/words/want.mp3"),
 	("a", "una", "/static/audio/words/a.mp3"),
 	("small", "pequeña", "/static/audio/words/small.mp3"),
@@ -113,8 +113,8 @@ qtwo = [
 	],["Escucha y selecciona:", 15, "/static/images/bar_8.svg", "https://www.svgrepo.com/show/15590/salad.svg"]
 	],[ # 5 entrada
 	[
-	("Do", "_", "/static/audio/words/Do.mp3"), # pregunta
-	("you", "tú", "/static/audio/words/you.mp3"),
+	("Do", "_", "/static/audio/words/do.mp3"), # pregunta
+	("you", "tú", "/static/audio/words/You.mp3"),
 	("have", "quieres", "/static/audio/words/have.mp3"),
 	("a", "un", "/static/audio/words/a.mp3"),
 	("ticket?", "boleto", "/static/audio/words/ticket.mp3"),
@@ -150,6 +150,83 @@ qtwo = [
 	# https://materializecss.com/icons.html
 	# https://www.svgrepo.com/
 	],["Escucha y selecciona:", 15, "/static/images/bar_12.svg", "https://www.svgrepo.com/show/405549/flag-for-flag-mexico.svg"]
+	],[ # 7 entrada
+	[
+	("This", "Esta", "/static/audio/words/this.mp3"), # pregunta
+	("is", "es", "/static/audio/words/is.mp3"),
+	("my", "mi", "/static/audio/words/my.mp3"),
+	("friend", "amiga", "/static/audio/words/friend.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"This is my friend" # opciones de respuesta
+	],[
+	("audio", "/static/audio/this_is_my_friend.mp3"), # audio normal
+	("audioSlow", "/static/audio/This__is__my__friend.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_14.svg", "https://www.svgrepo.com/show/51326/girl.svg"]
+	],[ # 8 entrada
+	[
+	("Do", "_", "/static/audio/words/do.mp3"), # pregunta
+	("you", "tú", "/static/audio/words/You.mp3"),
+	("need", "necesitas", "/static/audio/words/need.mp3"),
+	("some", "un poco de", "/static/audio/words/some.mp3"),
+	("money?", "dinero?", "/static/audio/words/money.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"Do you need some money?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/do_you_need_some_money.mp3"), # audio normal
+	("audioSlow", "/static/audio/do__you__need__some__money.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_16.svg", "https://www.svgrepo.com/show/111339/money.svg"]
+	],[ # 9 entrada
+	[
+	("Where", "Dónde", "/static/audio/words/where.mp3"), # pregunta
+	("is", "está", "/static/audio/words/is.mp3"),
+	("your", "tu", "/static/audio/words/your.mp3"),
+	("key?", "llave", "/static/audio/words/key.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"Where is your key?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/Where_is_your_key.mp3"), # audio normal
+	("audioSlow", "/static/audio/Where__is__your__key.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_18.svg", "https://www.svgrepo.com/show/24885/key.svg"]
+	],[ # 10 entrada
+	[
+	("How", "Cómo", "/static/audio/words/how.mp3"), # pregunta
+	("are", "estás", "/static/audio/words/are.mp3"),
+	("you?", "tú", "/static/audio/words/You.mp3"),
+
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"How are you?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/how_are_you.mp3"), # audio normal
+	("audioSlow", "/static/audio/how__are__you.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_20.svg", "https://www.svgrepo.com/show/77152/speech-bubbles.svg"]
 	]
 ]
 """
