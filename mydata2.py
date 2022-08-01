@@ -114,10 +114,9 @@ questions2 = [
 	],["Cuál es la mejor respuesta?: ", 0, "/static/images/bar_12.svg", "/static/images/friend.svg"]
 	],[ # 7 entrada
 	[
-	("What", ""), # pregunta
-	("do", "tú"),
-    ("you", "tienes"),
-	("want", "una"),
+	("What", "Qué"), # pregunta
+	("do you", "tú"),
+	("want", "quieres"),
 	],[
 	("I want some bread\nQuiero un poco de pan"), # comentario de respuesta
 	("I do not have a car\nNo tengo un carro"),
@@ -188,4 +187,230 @@ questions2 = [
 	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
 	],["Responde en Inglés: ", 1, "/static/images/bar_20.svg", "/static/images/restroom.svg"]
 	],
+]
+
+qtwo = [
+	[ #primera entrada
+	[
+	("I", "Yo", "/static/audio/words/I.mp3"), # pregunta
+	("want", "quiero", "/static/audio/words/want.mp3"),
+	("to", "comprar", "/static/audio/words/to.mp3"),
+	("buy", "comprar", "/static/audio/words/buy.mp3"),
+	("a", "una", "/static/audio/words/a.mp3"),
+	("house", "casa", "/static/audio/words/house.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"I want to buy a house" # opciones de respuesta
+	],[
+	("audio", "/static/audio/I_want_to_buy_a_house.mp3"), # audio normal
+	("audioSlow", "/static/audio/I__want__to__buy__a__house.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_2.svg", "https://www.svgrepo.com/show/415757/building-home-house.svg"]
+	],[ # 2 entrada
+	[
+	("You", "Tú", "/static/audio/words/You.mp3"), # pregunta
+	("need", "necesitas", "/static/audio/words/need.mp3"),
+	("a", "un", "/static/audio/words/a.mp3"),
+	("birthday", "cumpleaños", "/static/audio/words/birthday.mp3"),
+	("cake", "pastel", "/static/audio/words/cake.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"You need a birthday cake" # opciones de respuesta
+	],[
+	("audio", "/static/audio/You_need_a_birthday_cake.mp3"), # audio normal
+	("audioSlow", "/static/audio/You__need__a__birthday__cake.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_4.svg", "https://www.svgrepo.com/show/288801/birthday-cake-cake.svg"]
+	],[ # 3 entrada
+	[
+	("Where", "Dónde", "/static/audio/words/where.mp3"), # pregunta
+	("are", "eres", "/static/audio/words/are.mp3"),
+	("you", "tú", "/static/audio/words/You.mp3"),
+	("from?", "de", "/static/audio/words/from.mp3"),
+
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"Where are you from?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/where_are_you_from.mp3"), # audio normal
+	("audioSlow", "/static/audio/where__are__you__from.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_6.svg", "https://www.svgrepo.com/show/244916/internet-world.svg"]
+	],
+	[ # 4 entrada
+	[
+	("You", "Tú", "/static/audio/words/You.mp3"), # pregunta
+	("want", "quieres", "/static/audio/words/want.mp3"),
+	("a", "una", "/static/audio/words/a.mp3"),
+	("small", "pequeña", "/static/audio/words/small.mp3"),
+	("salad", "ensalada", "/static/audio/words/salad.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"you want a small salad" # opciones de respuesta
+	],[
+	("audio", "/static/audio/you_want_a_small_salad.mp3"), # audio normal
+	("audioSlow", "/static/audio/you__want__a__small__salad.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_8.svg", "https://www.svgrepo.com/show/15590/salad.svg"]
+	],[ # 5 entrada
+	[
+	("Do", "_", "/static/audio/words/do.mp3"), # pregunta
+	("you", "tú", "/static/audio/words/You.mp3"),
+	("have", "quieres", "/static/audio/words/have.mp3"),
+	("a", "un", "/static/audio/words/a.mp3"),
+	("ticket?", "boleto", "/static/audio/words/ticket.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"Do you have a ticket?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/Do_you_have_a_ticket.mp3"), # audio normal
+	("audioSlow", "/static/audio/Do__you__have__a__ticket.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_10.svg", "https://www.svgrepo.com/show/275144/plane-ticket-travel.svg"]
+	],[ # 6 entrada
+	[
+	("You", "Tú", "/static/audio/words/You.mp3"), # pregunta
+	("are", "eres", "/static/audio/words/are.mp3"),
+	("from", "de", "/static/audio/words/from.mp3"),
+	("Mexico", "México", "/static/audio/words/mexico.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"You are from Mexico" # opciones de respuesta
+	],[
+	("audio", "/static/audio/You_are_from_mexico.mp3"), # audio normal
+	("audioSlow", "/static/audio/You__are__from__mexico.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_12.svg", "https://www.svgrepo.com/show/405549/flag-for-flag-mexico.svg"]
+	],[ # 7 entrada
+	[
+	("This", "Esta", "/static/audio/words/this.mp3"), # pregunta
+	("is", "es", "/static/audio/words/is.mp3"),
+	("my", "mi", "/static/audio/words/my.mp3"),
+	("friend", "amiga", "/static/audio/words/friend.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"This is my friend" # opciones de respuesta
+	],[
+	("audio", "/static/audio/this_is_my_friend.mp3"), # audio normal
+	("audioSlow", "/static/audio/this__is__my__friend.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_14.svg", "https://www.svgrepo.com/show/51326/girl.svg"]
+	],[ # 8 entrada
+	[
+	("Do", "_", "/static/audio/words/do.mp3"), # pregunta
+	("you", "tú", "/static/audio/words/You.mp3"),
+	("need", "necesitas", "/static/audio/words/need.mp3"),
+	("some", "un poco de", "/static/audio/words/some.mp3"),
+	("money?", "dinero?", "/static/audio/words/money.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"Do you need some money?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/do_you_need_some_money.mp3"), # audio normal
+	("audioSlow", "/static/audio/do__you__need__some__money.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_16.svg", "https://www.svgrepo.com/show/111339/money.svg"]
+	],[ # 9 entrada
+	[
+	("Where", "Dónde", "/static/audio/words/where.mp3"), # pregunta
+	("is", "está", "/static/audio/words/is.mp3"),
+	("your", "tu", "/static/audio/words/your.mp3"),
+	("key?", "llave", "/static/audio/words/key.mp3"),
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"Where is your key?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/Where_is_your_key.mp3"), # audio normal
+	("audioSlow", "/static/audio/Where__is__your__key.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_18.svg", "https://www.svgrepo.com/show/24885/key.svg"]
+	],[ # 10 entrada
+	[
+	("How", "Cómo", "/static/audio/words/how.mp3"), # pregunta
+	("are", "estás", "/static/audio/words/are.mp3"),
+	("you?", "tú", "/static/audio/words/You.mp3"),
+
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"How are you?" # opciones de respuesta
+	],[
+	("audio", "/static/audio/how_are_you.mp3"), # audio normal
+	("audioSlow", "/static/audio/how__are__you.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_20.svg", "https://www.svgrepo.com/show/77152/speech-bubbles.svg"]
+	],[ # 11 entrada
+	[ #   https://ttsmp3.com/ 
+	("Renzo", "Rénzo", "/static/audio/words/renzo.mp3"), # pregunta
+	("do", "_", "/static/audio/words/do.mp3"),
+	("not", "no", "/static/audio/words/not.mp3"),
+	("need", "necesita", "/static/audio/words/need.mp3"),
+	("a", "un", "/static/audio/words/a.mp3"),
+	("lot", "mucho", "/static/audio/words/lot.mp3"),
+	("of", "de", "/static/audio/words/of.mp3"),
+	("money", "dinero", "/static/audio/words/money.mp3"),
+
+	],[
+	("Hello\nHola - es un saludo formal"), # comentario de respuesta
+	("See you later\nNos vemos luego"),
+	("Bye\nAdios - se usa para despedirce")
+	],[
+	"renzo do not need a lot of money" # opciones de respuesta
+	],[
+	("audio", "/static/audio/renzo_do_not_need_alotof_money.mp3"), # audio normal
+	("audioSlow", "/static/audio/renzo__do__not__need__alotof__money.mp3") #audio lento
+	# pregunta ,  num respuesta correcta , nivel de avance , imegen de ilustración
+	# https://materializecss.com/icons.html
+	# https://www.svgrepo.com/
+	],["Escucha y selecciona:", 15, "/static/images/bar_20.svg", "https://www.svgrepo.com/show/36700/man.svg"]
+	]
 ]
