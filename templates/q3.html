@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+<head>
+    <meta charset="UTF-8">
+    <title>2nd Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<style>
+body {
+    margin: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+}
+.header{
+    background: rgb(255, 255, 255);
+    height: 50px;
+}
+.main{
+    background: rgb(255, 255, 255);
+}
+.footer{
+    background: rgb(250, 250, 250);
+    height: 150px;
+    padding: 1em 0;
+    bottom: 0;
+}
+.material-icons{
+    color: rgb(36, 189, 255);
+    font-size: 36px;
+}
+
+.material-icons[name='slow']{
+    font-size: 42px;
+}
+
+.material-icons[name='ilustracion']{
+    color: rgba(255, 46, 129, 0.765);
+    font-size: 90px;
+}
+img {
+    margin: 10px 0 10px 0;
+    width: 340px;
+}
+
+img[name='hola']{
+    margin: 10px 0 10px 0;
+    width: 80px;
+}
+
+button {
+    font-size: 0.8em;
+    /*color: rgb(90, 90, 90);*/
+    color: rgb(154, 152, 152);
+    background-color: #ededed;
+    border: none; 
+    padding: 15px 16px;  
+    margin: 4px 1px;  
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: top;
+    padding: 0px;
+    width:auto;
+}
+
+.swal-text {
+    text-align: center;
+}
+
+tr.collapse {
+    visibility: collapse;
+    padding: 0px;
+}
+input[value=""]{
+	display:none;
+}
+input[name='hide']{
+    width:  fit-content;
+    margin: 4px 1px;
+    padding: 15px 16px; 
+    border: none;
+    border-radius: 15px;
+    color: rgb(154, 152, 152);
+    background-color: #ededed;
+    font-size: 0.8em;
+    font-family: verdana;
+    text-align: center;
+    cursor: pointer;
+    margin: 4px 2px;
+    /*pointer-events: none;
+    /*border: solid 3px #e1e1e1;*/
+}
+input[name='hide']:hover {
+    background-color: #ededed;
+}
+table ,th {
+    padding: 0px;
+    margin: 0 auto; 
+    vertical-align: top;
+    /*background: #fffefe;*/
+}
+th {
+    border: none;
+    /*height: 50px;*/
+    padding: 0px;
+}
+.main{
+    background: white;
+    height: 100;
+    padding: 1em 0;
+    bottom: 0;
+    align-items: center;
+}
+.check {  
+    font-size: 0.8em;
+    font-family: verdana;
+}
+/* EL POPUP */
+.popup_box{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 320px;
+    background: #f2f2f2;
+    text-align: center;
+    align-items: center;
+    padding: 40px;
+    border: 1px solid #b3b3b3;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.2); 
+    z-index: 9999;
+    border-radius: 15px;
+    display: none; 
+}
+.continuar{
+    background: rgb(36, 189, 255);
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+.comprobar{
+    font-size: 1.2em;
+}
+img[name='award']{
+    margin: 10px 0 10px 0;
+    width: 120px;
+}
+p{
+    font-size: 0.7em;
+}
+hr.mio {
+    border: 0;
+    border-top: 1px solid #9d9e9d;
+    margin-left:20px; 
+    margin-right:20px; 
+    /*color:#e7e8e7; 
+    background-color:#e7e8e7;*/
+}
+.linea {
+    border-top: 1px solid rgb(164, 164, 164);
+    height: 2px;
+    max-width: 90%;
+    padding: 0;
+    margin: 1px auto 0 auto;
+}  
+</style>
+</head>
+<body>
+    <header class="header">
+        <!-- la barra de recorrido-->
+        <img src= {{ question[2] }}>        
+    </header>
+    <main class="main">
+        <!-- los audios de botones-->
+        {% for myaudio in botones %}
+        <audio id= {{ myaudio[0] }} src={{ myaudio[2] }} preload="auto"></audio>
+        {% endfor %}
+        <!-- los audios de pregunta-->
+        {% for myaudio in myAudios %}
+            <audio id= {{ myaudio[0] }} src={{ myaudio[1] }} preload="auto"></audio>
+        {% endfor %}
+        <audio id="wrong" src="{{ url_for('static', filename='audio/wrong.mp3') }}" preload="auto"></audio>
+        <audio id="ok" src="{{ url_for('static', filename='audio/ok.mp3') }}" preload="auto"></audio>
+        <!--<i class="material-icons" name='ilustracion'>{{ question[3] }}</i><br> -->
+        <!-- https://www.svgrepo.com/ -->
+        <img name = "hola" src= {{ question[3] }}> 
+        <table>
+            <tr>
+                <!--<td><a href="javascript:play_single_sound();"><i class="material-icons">play_circle_filled</i></a></td> -->
+                <td>
+                {% for cadaQuestion in MyEsQuestion %}
+                <div class="tooltip"> {{ cadaQuestion[1] }}
+                    <span class="tooltiptext">{{ cadaQuestion[0] }}</span>
+                </div> 
+                {% endfor %}   
+                </td>     
+                <!--<td><a href="javascript:play_single_sound_slow();"><i class="material-icons" name='slow'>slideshow</i></a></td> -->
+            </tr>
+        </table>
+        <br>
+    <!--<hr class="mio"> -->
+    <div class="linea"></div>
+    <!--<hr style="margin-left:20px; margin-right:20px; color:#e7e8e7; background-color:#e7e8e7">-->
+    <table style="height:120px;">
+    <tr>   
+        <th>
+        <div id="mis_botones"></div>
+        </th>    
+    </tr> 
+    </table>
+    <script>
+        // Pongo 48 botones dummies 
+        let salida = "";
+        for (let i = 0; i < 48; i++) {
+          //text += cars[i] + "<br>";
+          salida += "<input type='button' name='hide' onclick='borrar(" + i + ")' value=''>"
+        }   
+        document.getElementById("mis_botones").innerHTML = salida;
+    </script>
+    <!--<hr class="mio"> -->
+    <div class="linea"></div>
+    <table style="width:340px;">
+        <!-- shuffle  jscript: https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort -->
+        <tr>
+            <th> 
+                {% for boton in botones %}
+                    <button type="button" class='check' onclick='poner("{{ boton[0] }}")'>{{ boton[0] }}</button>  
+                {% endfor %}
+            <!-- 
+            <button type="button" class='check' onclick='poner("what")'>what</button>
+            <button type="button" class='check' onclick='poner("is")'>is</button>
+            <button type="button" class='check' onclick='poner("your")'>your</button>
+            <button type="button" class='check' onclick='poner("name")'>name</button>
+            -->
+            </th> 
+        </tr>
+    </table> 
+      <p id="demo"></p>
+        <!-- este es un popUp -->
+        <div class="popup_box">
+            <!--<img name = "hola" src= https://www.svgrepo.com/show/380550/medal-champion-award-winner-olympic.svg>  -->
+            <!--<img name = "award" src= https://www.svgrepo.com/show/304720/star-prize-award.svg> -->
+            <img name = "award" src= https://www.svgrepo.com/show/211204/trophy-award.svg>
+            <h1>Congratulations</h1>
+            <label>Estás aprendiendo mucho</label><br><br>
+            <form action="/questionsthree" method="POST">
+                <input type = "hidden" id = "malo" name = "malo">
+                <input type = "hidden" id = "numero" name = "numero">
+                <button  class="continuar" type="submit" onclick="continuar()"> Continuar</button>
+            </form>
+            
+        </div>
+    </main>
+    <footer class="footer" id="myfooter">
+        <form action="/questionstwo" method="POST">
+            <input type = "hidden" id = "malo" name = "malo">
+            <input type = "hidden" id = "numero" name = "numero">
+            <button  class="comprobar" type="button" onclick="comprobar()">Comprobar</button><br>
+            {# <!--<input type="submit" value="hi" id="greet"> --> #}
+        </form>
+    </footer>
+    <script> 
+        /*
+        var  pregunta = []
+        {% for myaudio in botones %}
+        pregunta.push({{myaudio[0]}}); 
+        {% endfor %}
+        */
+        var wrong = {{ error }};
+        // reproducir el primer audio
+        window.onload = function () {
+            // para este tipo de Question no necesito el audio
+            //document.getElementById("audio").play();
+            // inicio el cronómetro
+            chronometerCall = setInterval(chronometer, 1000);
+        }
+        function play_single_sound() {
+            document.getElementById('audio').play();
+        }
+        function play_single_sound_slow() {
+            document.getElementById('audioSlow').play();
+        }
+        function play_single_wrong() {
+            document.getElementById('wrong').play();
+        }
+        function play_single_ok() {
+            document.getElementById('ok').play();
+        }
+        // Cambio el color de texto de check y lo hago inactivo
+        document.getElementsByClassName("comprobar")[0].style.color= "#ffffff";
+        document.getElementsByClassName("comprobar")[0].style.cursor= "not-allowed";
+        document.getElementsByClassName("comprobar")[0].style.pointerEvents= "none";
+
+        var btn_num = 0;
+        var cont_palabras = 0;
+        //var  pregunta = [ "I","want","to","buy","a","house"]
+        let tem =  {{ respuestas|safe }}; // esta el testo enviado desde python
+        let s_obj = new String(tem) // lo comvierto en string
+        const pregunta = s_obj.split(" "); //hago una división en palabras
+
+        // variable para la respuesta corecta:
+
+        let tem_resp_corecta =  {{ res_ok|safe }}; // esta el testo enviado desde python
+        let s_resp_corecta = new String(tem_resp_corecta) // lo comvierto en string
+        const respuesta = s_resp_corecta.split(" "); //hago una división en palabras
+
+        //var  pregunta = [];
+        //document.getElementById("demo").innerHTML = pregunta[1]; // clothing.length
+        var palabras = [];
+        
+        function poner(palabra){
+            document.getElementsByName("hide")[btn_num].value = palabra;
+            document.getElementsByName("hide")[btn_num].style.border = "Node";
+            //alert("Esta es la respuesta : ");
+            btn_num = btn_num +1 ;
+            cont_palabras = cont_palabras +1;
+            palabras.push(palabra); 
+            //document.getElementById("demo").innerHTML = palabras;
+            // encuenbtra el índice del botón
+            index = pregunta.indexOf(palabra);
+            //document.getElementById("demo").innerHTML  = index;
+            // cambia el color
+            document.getElementsByClassName("check")[index].style.color= "#d5d5d5";  
+            document.getElementsByClassName("check")[index].style.backgroundColor= "#d5d5d5";
+            // cambia atributos
+            document.getElementsByClassName("check")[index].style.cursor= "not-allowed";
+            document.getElementsByClassName("check")[index].style.pointerEvents= "none";
+            // cambiar fuente
+            document.getElementsByClassName("check")[index].style.fontFamily = "Verdana";
+
+            var myaudio = document.getElementById(palabra);
+            myaudio.play(); 
+            // ver cantiidad de palabras selecciondas
+            //document.getElementById("demo").innerHTML = cont_palabras;
+            btn_confirmar();
+        }
+        function borrar(numero){
+            document.getElementsByName("hide")[numero].value = "";
+            cont_palabras = cont_palabras -1;
+        // oculto la palabra
+            document.getElementsByName("hide")[numero].style.display = "none";
+            //quees = document.getElementsByName("hide")[0].value;
+            //esto_es = document.getElementsByName("hide")[numero].innerHTML
+            // luego hago funcional nuevamente el  boton
+            //document.getElementById("demo").innerHTML  = palabras[numero];
+            index = pregunta.indexOf(palabras[numero]);
+            // cambia el color
+            document.getElementsByClassName("check")[index].style.color= "#918e8e";  
+            document.getElementsByClassName("check")[index].style.backgroundColor= "#ededed";
+            // cambia atributos
+            document.getElementsByClassName("check")[index].style.cursor= "default";
+            document.getElementsByClassName("check")[index].style.pointerEvents= "all";
+            // boorar un elemento:
+            /*
+            for( var i = 0; i < palabras.length; i++){ 
+    
+                if ( palabras[i] === palabras[index]) { 
+            
+                    palabras.splice(i, 1); 
+                }
+            
+            }*/
+            // ver cantiidad de palabras selecciondas
+            //document.getElementById("demo").innerHTML = cont_palabras;
+            btn_confirmar();
+        }
+        function btn_confirmar(){
+            if ( cont_palabras >= 1) { 
+                document.getElementsByClassName("comprobar")[0].style.backgroundColor="#24baff";
+                //document.getElementsByClassName("comprobar")[0].style.color= "#24baff";
+                document.getElementsByClassName("comprobar")[0].style.cursor= "pointer";
+                document.getElementsByClassName("comprobar")[0].style.pointerEvents= "all"; 
+                // fonfo footer:
+                document.getElementById("myfooter").style.backgroundColor="#fafafa"; 
+            }else{
+                document.getElementsByClassName("comprobar")[0].style.backgroundColor="#ededed";
+                //document.getElementsByClassName("comprobar")[0].style.color= "#ffffff";
+                document.getElementsByClassName("comprobar")[0].style.cursor= "not-allowed";
+                document.getElementsByClassName("comprobar")[0].style.pointerEvents= "none";
+            }
+        }
+        function comprobar(){
+            
+            var texto = "";
+            for( var i = 0; i < 48; i++){
+                if (document.getElementsByName("hide")[i].value != ""){
+                    texto += document.getElementsByName("hide")[i].value + ","; 
+                }               
+            }
+            //alert(texto);
+            let s_texto = new String(texto)
+            const turespuesta = s_texto.split(",");
+            var ver ="";
+            for( var u = 0; u < respuesta.length; u++){
+                if(respuesta[u] == turespuesta[u]){
+                    ver = "exito"
+                }else{
+                    ver = "mal"    
+                }
+            }
+            // Custom Alert Popup Box using HTML CSS & Javascript:
+            // https://www.youtube.com/watch?v=QKMFJhB9eEY
+            if( ver == "mal"){
+                play_single_wrong();
+                wrong = wrong + 1; 
+                document.getElementById("myfooter").style.backgroundColor="#ffc7ce";
+                document.getElementsByClassName("comprobar")[0].style.backgroundColor="#e35162";
+                //$('.popup_box').css("display", "block");
+                
+                /*
+                swal({
+                    title: "Incorrecto!",
+                    icon: "error",
+                    text: "Prueba de nuevo",
+                    //button: "Continuar",
+                    button: false,
+                    timer: 2000,
+                  });
+                */
+            }else{
+                play_single_ok(); 
+                document.getElementById("numero").value = {{ val }} + 1;
+                document.getElementById("malo").value = wrong;  
+                document.getElementsByClassName("popup_box")[0].style.display= "block";
+                // cambio de color del botón comprobar, para NO llamar la atención
+                document.getElementsByClassName("comprobar")[0].style.backgroundColor="#ededed";
+                if(seconds > 59){
+                    var t = parseInt(seconds/60);
+                    var s = seconds % 60;
+                    document.getElementById("demo").innerHTML = t + " min " + s + " seg";
+                }else{
+                    document.getElementById("demo").innerHTML = seconds + " seg";
+                }
+                
+                /*              
+                swal({
+                    title: "Buen trabajo!",
+                    text: "Continua con la siguiente...",
+                    icon: "success",
+                    // button: "Continuar",
+                    button: false,
+                    timer: 2000,
+                  }).then((value) => {
+                    document.getElementsByClassName("comprobar")[0].type = "submit";
+                  });
+                */
+            }
+            //alert(ver);
+            //document.getElementById("demo").innerHTML = turespuesta.length;
+        }
+
+        function continuar(){
+            document.getElementsByClassName("popup_box")[0].style.display= "none";
+        }
+
+        // información para incluir un timer ( chronometer):
+        // https://www.proglogic.com/code/javascript/time/chronometer.php
+        // https://codepen.io/vanessametonini/pen/GMWEBv
+        // https://www.delftstack.com/es/howto/javascript/javascript-stopwatch/ ( ojo! tiene mucha publicidad)
+        let seconds = `00`;
+        var t;
+        function chronometer() {
+            seconds ++;
+        }
+    </script>
+</body>
+</html>
