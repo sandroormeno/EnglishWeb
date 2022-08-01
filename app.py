@@ -167,7 +167,7 @@ qthree = [
 	("large", "grande", "/static/audio/words/large.mp3"),
 	("salad", "ensalada", "/static/audio/words/salad.mp3"),
 	],[
-	("This", "Este"), # No estoy usando x ahora
+	("This", "Esta"), # No estoy usando x ahora
 	("is", "es"),
 	("your", "tu"),
 	("large salad", "ensalada grande"),
